@@ -34,11 +34,14 @@ const FlexVertical = glamorous.div({
   alignItems: 'center',
   border: `1px solid ${lightMain}`,
   borderRadius: '5px',
+  borderTopLeftRadius: 0,
+  borderTopRightRadius: 0,
   lineHeight: '0px',
   padding: '0 5px',
   boxShadow: boxShadow,
   margin: '0 auto',
-  marginTop: 6
+  marginTop: 6,
+  
 })
 
 const TodoBar = glamorous.div(props => ({
