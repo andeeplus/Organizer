@@ -100,13 +100,16 @@ function App(){
   }
 
   const functionProps = {recoverTodo,completeTodo,removeTodo,addTodo,updateStatus,ongoingTodo, setPriority}
+  const sortedTodo = todos.filter(item => !item.isCompleted && !item.onGoing).sort((a,b) => b.priority - a.priority)
+  const sortedOngoing = todos.filter(item => !item.isCompleted && item.onGoing).sort((a,b) => b.priority - a.priority)
+  const sortedComplete = todos.filter(item => item.isCompleted).sort((a,b) => b.priority - a.priority)
 
   return (
     <AppWrapper>
       <WorkAreaBlock>
-        <WorkArea id="todo" todos={todos.filter(item => !item.isCompleted && !item.onGoing)} action={{...functionProps}} status={updateStatus}>To Do</WorkArea>
-        <WorkArea id="ongoing" todos={todos.filter(item => !item.isCompleted && item.onGoing)} action={{...functionProps}} status={updateStatus}>Ongoing</WorkArea>
-        <WorkArea id="done" todos={todos.filter(item => item.isCompleted)} action={{...functionProps}} status={updateStatus}>Complete</WorkArea>
+        <WorkArea id="todo" todos={sortedTodo} action={{...functionProps}} status={updateStatus}>To Do</WorkArea>
+        <WorkArea id="ongoing" todos={sortedOngoing} action={{...functionProps}} status={updateStatus}>Ongoing</WorkArea>
+        <WorkArea id="done" todos={sortedComplete} action={{...functionProps}} status={updateStatus}>Complete</WorkArea>
       </WorkAreaBlock>
       <TodoForm addTodo={addTodo}/>
     </AppWrapper>

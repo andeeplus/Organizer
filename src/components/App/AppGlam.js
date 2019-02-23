@@ -8,8 +8,10 @@ const darkMain = '#1e0411'
 const darkMainAlpha = 'rgba(30, 4, 17, 0.18)'
 const midMain = '#f3f8ff'
 const lightMain = '#fdf0f6'
-const boxShadow = `6px 4px 20px 2px ${darkMainAlpha}`
+const boxShadow = `4px 2px 10px 0px ${darkMainAlpha}`
 const backGround = '#408ab4'
+const midBackGround = '#c2cfe2'
+const lightBackGround = '#fefeff'
 const italic300 = { fontWeight: 400, /*fontStyle: 'italic'*/}
 
 css.global('html, body', {
@@ -37,7 +39,7 @@ const FlexVertical = glamorous.div({
   lineHeight: '0px',
   padding: '0 5px',
   boxShadow: boxShadow,
-  margin: '0 auto',
+  margin: '8px auto',
   marginTop: 6,
   
 })
@@ -61,8 +63,22 @@ const TodoList = glamorous.div({
   minWidth: 372,
   overflow: 'scroll',
   overflowX: 'hidden',
+  padding: 6,
   '&:last-child ':{
     paddingBottom: 80
+  },
+  '&::-webkit-scrollbar':{
+    backgrounColor: darkMain,
+    width:6
+  },
+  '&::-webkit-scrollbar-track': {
+    backgroundColor:midMain,
+  },
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: midBackGround,
+    borderRadius:5,
+    backgroundClip: 'content-box',
+    border:`1px solid ${lightMain}`
   }
 })
 
@@ -76,7 +92,7 @@ const TodoItem = glamorous.div(props => ({
 }))
 
 const ListWrap = glamorous.div({
-  backgroundColor: midMain,
+  backgroundColor: lightBackGround,
   display: 'inline-block',
   margin: 4,
   borderRadius: 5,
