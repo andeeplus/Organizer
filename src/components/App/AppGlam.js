@@ -124,7 +124,7 @@ const Form = glamorous.form({
   padding: 0
 })
 
-const Input = glamorous.textarea({
+const Input = glamorous.input({
   width: 360,
   padding: 5,
   borderRadius: 5,

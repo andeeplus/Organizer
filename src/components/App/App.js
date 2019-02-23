@@ -29,7 +29,7 @@ function App(){
 
   const addTodo = text => {
     const idPicker = todos[todos.length-1] ? todos[todos.length-1].id +1 : 0
-    const lastTodo = {id: idPicker, text:text, isCompleted:false, onGoing: false, time: new Date().toLocaleString()}
+    const lastTodo = {id: idPicker, priority:0, text:text, isCompleted:false, onGoing: false, time: new Date().toLocaleString()}
     const newTodos = [...todos, lastTodo]
     setTodos(newTodos)
   }
