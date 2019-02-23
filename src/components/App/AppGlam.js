@@ -34,8 +34,6 @@ const FlexVertical = glamorous.div({
   alignItems: 'center',
   border: `1px solid ${lightMain}`,
   borderRadius: '5px',
-  borderTopLeftRadius: 0,
-  borderTopRightRadius: 0,
   lineHeight: '0px',
   padding: '0 5px',
   boxShadow: boxShadow,
@@ -83,7 +81,9 @@ const ListWrap = glamorous.div({
   margin: 4,
   borderRadius: 5,
   boxShadow: boxShadow,
-  border: `1px solid ${midMain}`, 
+  border: `1px solid ${midMain}`,
+  borderTopLeftRadius: 0,
+  borderTopRightRadius: 0
 })
 
 const WorkAreaBlock = glamorous.div({
