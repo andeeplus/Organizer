@@ -27,9 +27,10 @@ function App(){
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos]);
 
-  const addTodo = text => {
+  const addTodo = (text,priority) => {
+    const time = new Date().toLocaleString()
     const idPicker = todos[todos.length-1] ? todos[todos.length-1].id +1 : 0
-    const lastTodo = {id: idPicker, priority:0, text:text, isCompleted:false, onGoing: false, time: new Date().toLocaleString()}
+    const lastTodo = {id: idPicker, priority: priority, text:text, isCompleted:false, onGoing: false, time: time}
     const newTodos = [...todos, lastTodo]
     setTodos(newTodos)
   }
@@ -38,6 +39,7 @@ function App(){
     const newTodos = [...todos]
     const index = newTodos.findIndex(todo => todo.id === id)
     newTodos[index].isCompleted = true
+    newTodos[index].onGoing = false
     newTodos[index].priority = 0
     setTodos(newTodos)
   }

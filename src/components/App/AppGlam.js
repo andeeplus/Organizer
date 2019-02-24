@@ -14,6 +14,8 @@ const midBackGround = '#c2cfe2'
 const lightBackGround = '#fefeff'
 const italic300 = { fontWeight: 400, /*fontStyle: 'italic'*/}
 
+const color = {darkMain, darkMainAlpha, midMain, lightMain, backGround, midBackGround, lightBackGround}
+
 css.global('html, body', {
   backgroundColor: backGround,
   fontFamily: 'Open Sans, sans-serif',
@@ -24,6 +26,19 @@ const AppWrapper = glamorous.div({
   ...flexColCenter,
   margin: '0 auto',
   marginTop: 20,
+})
+
+const FlexHorizontal = glamorous.div({
+  ...flexRowCenter,
+  justifyContent: 'space-between',
+  width: '100%'
+
+})
+
+const PostControls = glamorous.div({
+  ...flexRowCenter,
+  justifyContent: 'flex-end',
+  width: '96%'
 })
 
 const FlexVertical = glamorous.div({
@@ -114,9 +129,28 @@ const Time = glamorous.p({
   color: lightMain
 })
 
+const ButtonIcon = glamorous.button({
+  lineHeight: 1.3,
+  outline: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  color: lightMain,
+  padding: '2px 6px',
+  fontSize: 14,
+  cursor: 'pointer'
+})
+
 const Button = glamorous.button({
   lineHeight: 1.3,
-  outline: 'none'
+  outline: 'none',
+  backgroundColor: darkMain,
+  border: midMain,
+  color: lightMain,
+  borderRadius: 5,
+  padding: '5px 8px',
+  fontSize: 12,
+  cursor: 'pointer',
+  boxShadow: boxShadow,
 })
 
 function prioritySwitcher(type, id){
@@ -138,20 +172,33 @@ const ButtonPriority = glamorous.button((props) => ({
   outline: 'none'
 }))
 
-const Form = glamorous.form({
-  margin: '25px 0',
-  padding: 0
+const AddTodoBlock = glamorous.div({
+  maxWidth: '350',
 })
 
-const Input = glamorous.input({
-  width: 360,
+const Form = glamorous.form({
+  ...flexColCenter,
+  minWidth: 372,
+  margin: '25px 0',
+  padding: 6,
+  paddingTop: 0,
+  backgroundColor: lightBackGround,
+  boxShadow: boxShadow,
+  borderRadius: 5
+})
+
+const TextArea = glamorous.textarea({
+  width: '100%',
+  height: 100,
+  backgroundColor: lightBackGround,
   padding: 5,
-  borderRadius: 5,
-  height: 50,
+  border: 'none',
+  boxSizing: 'border-box',
   textAlign: 'center',
   color: darkMain,
-  fontSize: '16px',
-  boxShadow: boxShadow
+  fontSize: '12px',
+  resize: 'none',
+  outline: 'none'
 })
 
 const TodoKind = glamorous.h1({
@@ -163,4 +210,10 @@ const TodoKind = glamorous.h1({
   padding: 3
 })
 
-export { Input, Form, Time, ListWrap, TodoBar, TodoItem, TodoList, TodoKind, Button, FlexVertical, WorkAreaBlock, AppWrapper, ButtonPriority } 
+export { 
+  color,
+  TextArea, Form, Time, TodoKind, AddTodoBlock, 
+  FlexHorizontal, FlexVertical, AppWrapper, WorkAreaBlock, 
+  ListWrap, TodoBar, TodoItem, TodoList, PostControls,
+  ButtonIcon, Button, ButtonPriority 
+} 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Time, TodoBar, TodoItem, Button, ButtonPriority } from '../App/AppGlam'
+import { Time, TodoBar, TodoItem, ButtonIcon, ButtonPriority } from '../App/AppGlam'
 import Draggable from '../DragAndDrop/Draggable/Draggable'
 
 function Todo({ todo, id, editTodo, removeTodo, ongoingTodo, setPriority}){
@@ -14,9 +14,9 @@ function Todo({ todo, id, editTodo, removeTodo, ongoingTodo, setPriority}){
         </div>
           <Time>{todo.time}</Time>
         <div>
-          <Button onClick={() => ongoingTodo(todo.id)}>{todo.onGoing ? '☜' : '✎'}</Button>
-          <Button onClick={() => editTodo(todo.id)}>{!todo.isCompleted ? '✓' : '↻'}</Button>
-          <Button onClick={() => removeTodo(todo.id)}>✗</Button>
+          <ButtonIcon onClick={() => ongoingTodo(todo.id)}>{todo.onGoing ? '☜' : '✎'}</ButtonIcon>
+          <ButtonIcon onClick={() => editTodo(todo.id)}>{!todo.isCompleted ? '✓' : '↻'}</ButtonIcon>
+          <ButtonIcon onClick={() => removeTodo(todo.id)}>✗</ButtonIcon>
         </div>
       </TodoBar>
         <TodoItem todo={todo}>{todo.text}</TodoItem>
