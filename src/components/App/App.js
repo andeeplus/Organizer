@@ -27,7 +27,13 @@ function App(){
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos]);
 
-
+  const addTodo = (text,priority) => {
+    const time = new Date().toLocaleString()
+    const idPicker = todos[todos.length-1] ? todos[todos.length-1].id +1 : 0
+    const lastTodo = {id: idPicker, priority: priority, text:text, isCompleted:false, onGoing: false, time: time}
+    const newTodos = [...todos, lastTodo]
+    setTodos(newTodos)
+  }
   
   const completeTodo = id => {
     const newTodos = [...todos]
@@ -72,7 +78,9 @@ function App(){
   const updateStatus = (id, type) => {
     
     const newTodos = [...todos]
-    const index = newTodos.findIndex(todo => todo.id.toString() === id)
+    
+    const cleanId = id.split('item')[1].toString()
+    const index = newTodos.findIndex(todo => todo.id === parseInt(cleanId))
 
     switch(type){
       case 'todo':
@@ -94,7 +102,7 @@ function App(){
     
   }
 
-  const functionProps = {recoverTodo,completeTodo,removeTodo,updateStatus,ongoingTodo, setPriority}
+  const functionProps = {recoverTodo,completeTodo,removeTodo,addTodo,updateStatus,ongoingTodo, setPriority}
   const sortedTodo = todos.filter(item => !item.isCompleted && !item.onGoing).sort((a,b) => b.priority - a.priority)
   const sortedOngoing = todos.filter(item => !item.isCompleted && item.onGoing).sort((a,b) => b.priority - a.priority)
   const sortedComplete = todos.filter(item => item.isCompleted).sort((a,b) => b.priority - a.priority)
@@ -106,7 +114,7 @@ function App(){
         <WorkArea id="ongoing" todos={sortedOngoing} action={{...functionProps}} status={updateStatus}>Ongoing</WorkArea>
         <WorkArea id="done" todos={sortedComplete} action={{...functionProps}} status={updateStatus}>Complete</WorkArea>
       </WorkAreaBlock>
-     
+      <TodoForm addTodo={addTodo}/>
     </AppWrapper>
   )
 }
