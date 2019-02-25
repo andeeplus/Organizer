@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { TextArea, Form, ButtonIcon, Button, ButtonPriority, TodoBar, PostControls, color} from '../App/AppGlam'
+import { TextArea, Form, ButtonIcon, Button, ButtonPriority, TodoBar, PostControls, color} from '../../styles/emotion'
 
 function TodoForm({addTodo}) {
   const [value, setValue] = useState('')

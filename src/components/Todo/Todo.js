@@ -1,5 +1,5 @@
 import React from 'react';
-import { Time, TodoBar, TodoItem, ButtonIcon, ButtonPriority } from '../App/AppGlam'
+import { Time, TodoBar, TodoItem, ButtonIcon, ButtonPriority } from '../../styles/emotion'
 import Draggable from '../DragAndDrop/Draggable/Draggable'
 
 function Todo({ todo, id, editTodo, removeTodo, ongoingTodo, setPriority}){

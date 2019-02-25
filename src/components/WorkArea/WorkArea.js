@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListWrap, TodoList, TodoKind } from '../App/AppGlam'
+import { ListWrap, TodoList, TodoKind } from '../../styles/emotion'
 import Droppable from '../DragAndDrop/Droppable/Droppable'
 import Todo from '../Todo/Todo'
 
