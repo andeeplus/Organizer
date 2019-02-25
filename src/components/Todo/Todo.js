@@ -3,9 +3,8 @@ import { Time, TodoBar, TodoItem, ButtonIcon, ButtonPriority } from '../../style
 import Draggable from '../DragAndDrop/Draggable/Draggable'
 
 function Todo({ todo, id, editTodo, removeTodo, ongoingTodo, setPriority}){
-
   return(
-    <Draggable id={id} tag="notdrag">
+    <Draggable id={'item'+id} tag="notdrag">
       <TodoBar priority={todo.priority}>
         <div>
           <ButtonPriority priority={todo.priority} style={{fontWeight: 300, fontStyle: 'italic'}} onClick={() => setPriority(todo.id, 0)}>1</ButtonPriority>
