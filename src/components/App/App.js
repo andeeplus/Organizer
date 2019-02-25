@@ -4,9 +4,9 @@ import WorkArea from '../WorkArea/WorkArea'
 import {WorkAreaBlock, AppWrapper} from '../../styles/emotion'
 
 const dummyTodos = [
-{id: 'id0', priority: 1, text: 'Add your todo down here', isCompleted: false, onGoing: false, time: new Date().toLocaleString()},
-{id: 'id1', priority: 2, text: 'Ongoing todos', isCompleted: false, onGoing: true, time: new Date().toLocaleString()},
-{id: 'id2', priority: 0, text: 'Completed todos', isCompleted: true, onGoing: false, time: new Date().toLocaleString()}]
+{id: 0, priority: 1, text: 'Add your todo down here', isCompleted: false, onGoing: false, time: new Date().toLocaleString()},
+{id: 1, priority: 2, text: 'Ongoing todos', isCompleted: false, onGoing: true, time: new Date().toLocaleString()},
+{id: 2, priority: 0, text: 'Completed todos', isCompleted: true, onGoing: false, time: new Date().toLocaleString()}]
 
 function App(){
   let localTodo;
@@ -27,20 +27,7 @@ function App(){
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos]);
 
-  const idTodo = (list) => {
-    console.log(list,list[list.length-1], parseInt(list[list.length-1].id.split('id')[1]) + 1 )
-    return list[list.length-1] 
-    ? 'id' + (parseInt(list[list.length-1].id.split('id')[1]) + 1)
-    : 'id0'
-  }
 
-  const addTodo = (text,priority) => {
-    const time = new Date().toLocaleString()
-    const idPicker = idTodo(todos)
-    const lastTodo = {id: idPicker, priority: priority, text:text, isCompleted:false, onGoing: false, time: time}
-    const newTodos = [...todos, lastTodo]
-    setTodos(newTodos)
-  }
   
   const completeTodo = id => {
     const newTodos = [...todos]
@@ -107,7 +94,7 @@ function App(){
     
   }
 
-  const functionProps = {recoverTodo,completeTodo,removeTodo,addTodo,updateStatus,ongoingTodo, setPriority}
+  const functionProps = {recoverTodo,completeTodo,removeTodo,updateStatus,ongoingTodo, setPriority}
   const sortedTodo = todos.filter(item => !item.isCompleted && !item.onGoing).sort((a,b) => b.priority - a.priority)
   const sortedOngoing = todos.filter(item => !item.isCompleted && item.onGoing).sort((a,b) => b.priority - a.priority)
   const sortedComplete = todos.filter(item => item.isCompleted).sort((a,b) => b.priority - a.priority)
@@ -119,7 +106,7 @@ function App(){
         <WorkArea id="ongoing" todos={sortedOngoing} action={{...functionProps}} status={updateStatus}>Ongoing</WorkArea>
         <WorkArea id="done" todos={sortedComplete} action={{...functionProps}} status={updateStatus}>Complete</WorkArea>
       </WorkAreaBlock>
-      <TodoForm addTodo={addTodo}/>
+     
     </AppWrapper>
   )
 }
