@@ -81,7 +81,7 @@ function App(){
     
     const cleanId = id.split('item')[1].toString()
     const index = newTodos.findIndex(todo => todo.id === parseInt(cleanId))
-
+    console.log(id,cleanId,index)
     switch(type){
       case 'todo':
       newTodos[index].isCompleted = false

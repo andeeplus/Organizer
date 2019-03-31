@@ -101,6 +101,15 @@ const TodoItem = styled.div(props => ({
   userSelect: 'text'
 }))
 
+const IconImg = styled.img({
+  height: 15,
+  opacity: 0.1,
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  paddingBottom: 10,
+})
+
 const ListWrap = styled.div({
   backgroundColor: lightBackGround,
   display: 'inline-block',
@@ -207,8 +216,8 @@ const TodoKind = styled.h1({
 })
 
 export { 
-  color,
-  TextArea, Form, Time, TodoKind, AddTodoBlock, 
+  color, IconImg,
+  TextArea, Form, Time, TodoKind, AddTodoBlock,  
   FlexHorizontal, FlexVertical, AppWrapper, WorkAreaBlock, 
   ListWrap, TodoBar, TodoItem, TodoList, PostControls,
   ButtonIcon, Button, ButtonPriority 
